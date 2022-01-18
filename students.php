@@ -29,6 +29,10 @@ if(mysqli_num_rows($res)>0){
         </p></div></a>';
     }
 
+}else{
+    echo '<br><div class="alert alert-warning" role="alert">
+    No students found!
+  </div>';
 }
 
 ?>

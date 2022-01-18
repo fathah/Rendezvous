@@ -92,16 +92,17 @@ while($r = mysqli_fetch_assoc($grpRES)){
 <div style="float: right; margin-right:10px;">
 <input type="submit" value="Update Student" name="submit"   class="btn btn-primary" >
 <button class="btn btn-danger"
-onclick="deleteStudent()">Delete Student</button>
+type="button"
+onclick="deleteStudent(<?php echo $_GET['id']; ?>)">Delete Student</button>
 </div>
 
 
     </form>
 </div>
 <script>
-  function deleteStudent(){
+  function deleteStudent(id){
     if(confirm('Do you want to delete this student?')){
-      window.location.href='inc/deleteStudent.php?id=<?php echo $_GET['id']?>'
+      window.location.href="inc/deleteStudent.php?id="+id;
   }
 }
 </script>
