@@ -16,14 +16,14 @@ if(strpos($link, 'app')!== false){
     <a href="../programs.php">Programmes</a>
     <a href="../team.php">Groups</a>
     <a href="../results.php">Results</a>
-    <a href="../app">Mobile App</a>';
+    <a href="../app">Cloud Sync</a>';
 }else{
     echo'<a href="./">Home</a>
     <a href="students.php">Students</a>
     <a href="programs.php">Programmes</a>
     <a href="team.php">Groups</a>
     <a href="results.php">Results</a>
-    <a href="app">Mobile App</a>';
+    <a href="app">Cloud Sync</a>';
 }
 
 ?>

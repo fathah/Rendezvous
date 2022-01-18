@@ -51,6 +51,8 @@
 <!-- Group Name -->
 <select class="form-select" aria-label="Section" name="section" id="section" required>
   <option selected disabled>Section</option>
+  <option value="pr">Premier</option>
+  <option value="sj">Sub Junior</option>
   <option value="jr">Junior</option>
   <option value="sr">Senior</option>
   <option value="gn">General</option>

@@ -6,4 +6,7 @@ $result = $_POST['result'];
 
         $declareSQL = "UPDATE program SET resultDeclared = $result WHERE id = $id";
         mysqli_query($conn, $declareSQL);
+
+
+        
         ?>

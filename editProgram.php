@@ -58,6 +58,8 @@ $row = mysqli_fetch_assoc($viewRes);
 <!-- Group Name -->
 <select class="form-select" aria-label="Section" name="section" id="section" required>
   <option <?php if($row['section']==""){echo "selected";}?> disabled>Section</option>
+  <option value="pr" <?php if($row['section']=="jr"){echo "selected";}?>>Premier</option>
+  <option value="sj" <?php if($row['section']=="jr"){echo "selected";}?>>Sub Junior</option>
   <option value="jr" <?php if($row['section']=="jr"){echo "selected";}?>>Junior</option>
   <option value="sr" <?php if($row['section']=="sr"){echo "selected";}?>>Senior</option>
   <option value="gn" <?php if($row['section']=="gn"){echo "selected";}?>>General</option>

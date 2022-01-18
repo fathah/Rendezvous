@@ -84,15 +84,27 @@ function getCampusName($campus)
 function getSection($sec)
 {
   switch ($sec) {
-    case 'jr':
-      return "Junior";
+    case 'pr':
+      return "Primary";
       break;
+      case 'sc':
+        return "Secondary";
+        break;
+        case 'sj':
+          return "Sub Junior";
+          break;
+        case 'jr':
+          return "Junior";
+          break;
+         
     case 'sr':
       return "Senior";
       break;
-    case 'gn':
-      return "General";
-      break;
+    
+      
+        case 'gn':
+          return "General";
+          break;
     default:
       return "Unknown";
       break;

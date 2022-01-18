@@ -33,15 +33,21 @@ if(mysqli_num_rows($res)>0){
 
 function updateTeamScore(){
     //UPDATE TEAM SCORE
-$teamScore = array(
-    "ag" => getScore('ag'),
-    "cc" => getScore('cc'),
-    "ib" => getScore('ib'),
+global $conn;
+$teamSql = "SELECT * FROM team";
+$teamRes = mysqli_query($conn, $teamSql);
+if(mysqli_num_rows($teamRes)>0){
+    $teamScore = array();
+    while($r = mysqli_fetch_assoc($teamRes)){
+        $code = $r['code'];
+       
+        array_push($teamScore, array("team"=>$code,"score"=>getScore($code)));
+       
+    }
+    $teamJson = json_encode($teamScore);
+    updateData($teamJson, 'teamScore');
+}
 
-);
-$teamJson = json_encode($teamScore);
-echo $teamJson;
-updateData($teamJson, 'teamScore');
 }
 
 updateTeamScore();

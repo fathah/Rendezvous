@@ -5,6 +5,6 @@ rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0s
 crossorigin="anonymous">
 <?php 
 
-include'db.php';
+include 'db.php';
 
 ?>

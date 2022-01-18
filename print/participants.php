@@ -19,7 +19,7 @@ function reload(){
     location.reload();
 }
 </script>
-<body onload="printParticipants()">
+<body>
 
 <?php
 
@@ -96,13 +96,24 @@ if(mysqli_num_rows($particRes)>0){
 
 
 ?>
-<div class="center onlyScreen">
+<div class="mainPage onlyScreen">
+    <section class="print-preview">
+     <span class="preview-span">
+     Print Preview
+     </span>
+    </section>
+    <section>
+    <div class="print-actions">
+<main class="onlyScreen">
 <a onClick="goBack()" class="btn">
     Go Back
 </a>
-<a onClick="reload()" class="btn" style="background: #c0392b; margin-left:10px">
-    Reprint
+<a onClick="printParticipants()" class="btn" style="background: #c0392b; margin-left:10px">
+    Print
 </a>
+</main>
+</div>
+    </section>
 </div>
 
 </body>

@@ -1,29 +1,9 @@
 <?php
 
 include 'inc/head.php';
+include 'app/syncFunctions.php';
 
 
-function updateData($jsonData, $file){
-    
-    $url = "https://manzilmedia.net/apps/rendezvous/sync.php";
-    $api = "06b53047cf294f7207789ff5293ad2dc";
-    
-    
-    $data = array('api' =>$api, 'data' => $jsonData, 'file'=>$file);
-    
-    $options = array(
-        'http' => array(
-            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method'  => 'POST',
-            'content' => http_build_query($data)
-        )
-    );
-    $context  = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
-    if ($result === FALSE) { 
-        echo 'Something Went wrong!';
-     }
-    }
 
 
 function syncStudents(){
@@ -76,12 +56,11 @@ while($rw = mysqli_fetch_assoc($declRES)){
 
 
 
-
-
         $array = array(
             "name" => $r['name'],
             "team" => $r['team'],
             "chest" => $r['chest'],
+            "card" => $r['card_no'],
             "section" => $r['section'],
             "campus" => $r['campus'],
             "programList"=> $programlistArr,
@@ -103,20 +82,62 @@ while($rw = mysqli_fetch_assoc($declRES)){
 
 
 
+
    updateData($jsonData, 'students');
    
 }
 }
 
+function syncProgramList(){
+    global $conn;
+     $sql = "SELECT a.*, b.name FROM programlist a, students b WHERE a.studentid = b.id";
+ $res = mysqli_query($conn, $sql);
+ if($res){
+     if(mysqli_num_rows($res)>0){
+         $dataArray = array();
+         while($r = mysqli_fetch_assoc($res)){
+             array_push($dataArray,array(
+                 "studentid" => $r['studentid'],
+                 "programid" => $r['programid'],
+                 "groupId" => $r['groupId'],
+                 "point" => $r['point'],
+                 "rank" => $r['rank'],
+                 "type" => $r['type'],
+                 "name" => $r['name']
+             ));
+           
+            
+         }
+         $jsonData = json_encode($dataArray);
+         updateData($jsonData, 'programlist');
+        
+     }
+ }
+ 
+ }
 
-
-
+ function syncAllPrograms(){
+    global $conn;
+     $sql = "SELECT * FROM program";
+ $res = mysqli_query($conn, $sql);
+ if($res){
+     if(mysqli_num_rows($res)>0){
+         $dataArray = array();
+         while($r = mysqli_fetch_assoc($res)){
+             array_push($dataArray,$r);
+         }
+         $jsonData = json_encode($dataArray);
+         updateData($jsonData, 'program');
+        
+     }
+ }
+ 
+ } 
 
 
 syncStudents();
-
-
-
+syncProgramList();
+syncAllPrograms();
 
 
 ?>

@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <title>Add Participant | Rendezvous </title>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 </head>
@@ -20,6 +20,9 @@
    $error =  "";
    $prId = "";
    if(isset($_POST['submit'])){
+     if(isset($_POST['studentid'])){
+
+     
        $studentid= mysqli_real_escape_string($conn, $_POST['studentid']);
        $programid= mysqli_real_escape_string($conn, $_POST['programid']);
        //$grade= mysqli_real_escape_string($conn, $_POST['grade']);
@@ -34,27 +37,43 @@ $teamNameRes = mysqli_query($conn, $getTeamNameSQL);
 $teamNameRow = mysqli_fetch_assoc($teamNameRes);
 $finalTeamName = $teamNameRow['team'];
 
-  $mysql = "INSERT INTO programlist(studentid, programid, groupId, type) VALUES('$studentid', '$programid', '$finalTeamName','$finalGroupType')";
+//CHECK IF ALREADY ADDED
+$checkAddedSql = "SELECT studentid, programid FROM programlist 
+                  WHERE studentid='$studentid' AND programid = '$programid'";
+                  $checkAddedRes = mysqli_query($conn, $checkAddedSql);
 
+                  if(mysqli_num_rows($checkAddedRes)>0){
+                    $error = '<div class="alert alert-danger">This student is already added.</div>';
+                  }else{
+                    $mysql = "INSERT INTO programlist(studentid, programid, groupId, type) VALUES('$studentid', '$programid', '$finalTeamName','$finalGroupType')";
 
+                    if(mysqli_query($conn, $mysql)){
+                        $error = '<div class="alert alert-success" role="alert">
+                        Participant added successfully! <span onclick="goBack('.$_GET['id'].')" style="margin-left:10px; cursor:pointer;" class="badge rounded-pill bg-success">Go Back</span>
+             
+                      </div>';
+                    }else{
+                     $error = '<div class="alert alert-danger" role="alert">Failed to add Participant!
+                     
+                    </div>';
+                        echo mysqli_error($conn);
+                    }
+                  }
 
-       if(mysqli_query($conn, $mysql)){
-           $error = '<div class="alert alert-success" role="alert">
-           Participant added successfully! <span onclick="goBack('.$_GET['id'].')" style="margin-left:10px; cursor:pointer;" class="badge rounded-pill bg-success">Go Back</span>
-
-         </div>';
-       }else{
-        $error = '<div class="alert alert-danger" role="alert">Failed to add Participant!
-        
-       </div>';
-           echo mysqli_error($conn);
-       }
+  
+      }else{
+        $error = '<div class="alert alert-danger">Please select a student.</div>';
+      }
    }
    
    
    ?>
 
 <div class="centerCard card">
+
+
+
+
 <?php echo $error; ?>
 
     <form action="" method="post">

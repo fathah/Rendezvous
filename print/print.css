@@ -1,8 +1,20 @@
 .onlyPrint{
-    display: none;
+    width: 40vw;
+    height: auto;
+   
 }
 .onlyScreen{
     display: block;
+    
+}
+.ft{
+    position: absolute;
+    bottom: 10px;
+    margin: 30px;
+    width: 40vw;
+}
+.preview-span{
+    position:absolute;top:0;background:green; color:white; padding:5px;
 }
 @page {
     size: A4;
@@ -15,9 +27,16 @@
     }
     .onlyPrint{
         display: block;
+        width:100%;
     }
     .onlyScreen{
         display: none;
+    }
+    .ft{
+        width: auto;
+    }
+    .preview-span{
+        display:none;
     }
   }
   
@@ -65,8 +84,20 @@ table{
     font-size: 1.2em;
 }
 
-.ft{
-    position: absolute;
-    bottom: 10px;
-    margin: 30px;
+
+.mainPage{
+    display: flex;
+    width: 100%;
+
+}
+.print-preview{
+    width:70%;
+    
+}
+
+.print-actions{
+    display: flex;
+    justify-content:center;
+    margin-top: 2rem;
+    
 }
