@@ -64,8 +64,12 @@ $id = mysqli_real_escape_string($conn, $_GET['id']);
 <!-- Group Name -->
 <select class="form-select" aria-label="Section"  name="section" id="section" required>
   <option   value="" <?php if($row['section']==""){echo "selected";}?>>Section</option>
+  <option value="pr" <?php if($row['section']=="pr"){echo "selected";}?>>Primary</option>
+  <option value="sc" <?php if($row['section']=="sc"){echo "selected";}?>>Secondary</option>
+  <option value="sj" <?php if($row['section']=="sj"){echo "selected";}?>>Sub Junior</option>
   <option value="jr" <?php if($row['section']=="jr"){echo "selected";}?>>Junior</option>
   <option value="sr" <?php if($row['section']=="sr"){echo "selected";}?>>Senior</option>
+  <option value="gn" <?php if($row['section']=="gn"){echo "selected";}?>>General</option>
 </select>
 <br>
 <!-- Section -->
