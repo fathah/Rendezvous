@@ -19,7 +19,7 @@ function reload(){
     location.reload();
 }
 </script>
-<body>
+<body onload="printParticipants()">
 
 <?php
 
@@ -106,9 +106,10 @@ echo'</center>
      ';
     }
     echo'</table>
-   <center> <div class="ft"><img src="../img/footer.png" width="100%"></div></center>
+  
     
     </div>';
+    // <center> <div class="ft"><img src="../img/footer.png" width="100%"></div></center>
 
 }else{
     echo'<br><br><center>Results Not Declared</center>';

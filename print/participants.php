@@ -19,7 +19,7 @@ function reload(){
     location.reload();
 }
 </script>
-<body>
+<body onload="printParticipants()">
 
 <?php
 
@@ -85,9 +85,10 @@ if(mysqli_num_rows($particRes)>0){
      ';
     }
     echo'</table>
-   <center> <div class="ft"><img src="../img/footer.png" width="100%"></div></center>
     
     </div>';
+    // <center> <div class="ft"><img src="../img/footer.png" width="100%"></div></center>
+
 
 }else{
     echo'<br><br><center>No Participants</center>';
