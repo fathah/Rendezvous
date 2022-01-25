@@ -24,7 +24,8 @@
 if(mysqli_num_rows($res)>0){
     while($row = mysqli_fetch_assoc($res)){
         echo'<a href="singleProgram.php?id='.$row['id'].'"><div class="snRow">
-        <img src="img/event.svg" width="30px" style="margin-right:10px;margin-bottom:5px;">'.$row['name'].' ('.getSection($row['section']).')
+        <img src="img/event.svg" width="30px" style="margin-right:10px;margin-bottom:5px;">'.$row['name'].'
+       <span style="margin-right:5px;display:inline-block;"></span> <span class="badge bg-primary"> '.getSection($row['section']).' '.strtoupper($row['general_type']).'</span>
       <a href="editProgram.php?id='.$row['id'].'"><div class="ed"><img src="img/edit.png" width="20px" alt="">
       </div></a>
         </p></div></a>';

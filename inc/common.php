@@ -97,7 +97,7 @@ function getSection($sec)
           return "Junior";
           break;
          
-    case 'sr':
+    case 'sn':
       return "Senior";
       break;
     
@@ -110,6 +110,8 @@ function getSection($sec)
       break;
   }
 }
+
+
 
 
 function getGroupList($conn)

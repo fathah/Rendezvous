@@ -33,9 +33,11 @@ $participantSql = "SELECT * FROM programlist WHERE programid = $id";
 $particRes = mysqli_query($conn, $participantSql);
 $num_rows = mysqli_num_rows($particRes);
 
-$sectionSQL =  "SELECT section FROM program WHERE id = $id";
+$sectionSQL =  "SELECT general_type,section FROM program WHERE id = $id";
 $sectionRes = mysqli_query($conn, $sectionSQL);
-$sction = mysqli_fetch_assoc($sectionRes)['section'];
+$assoc = mysqli_fetch_assoc($sectionRes);
+$sction = $assoc['section'];
+$gnType = $assoc['general_type'];
 //Print View Starts Here
 
 if(mysqli_num_rows($particRes)>0){
@@ -45,20 +47,24 @@ if(mysqli_num_rows($particRes)>0){
 <center><img src="../img/head.png" width="60%" alt="">
 <hr>
 </center><br><br>
-<?php echo'<div class="title">'.$name.' ('.getSection($sction).')</div>'; ?>
+<?php echo'<div class="title">'.$name.' ('.getSection($sction);
+if($gnType != ""){
+    echo ' '.strtoupper($gnType);
+}
+echo')</div>'; ?>
 <br>
 <table width="100%">
 <tr>
     <th>Name</th>
     <th>Team</th>
-    <th>Chest</th>
+    <th>Jamia ID</th>
     <th>Code</th>
-    <th>Signature</th>
+    <th>Sign</th>
   </tr>
 <?php
     while($row1 = mysqli_fetch_assoc($particRes)){
         $sngleId =  $row1['studentid'];
-        $singleSQL = "SELECT name, chest, team FROM students WHERE id=$sngleId";
+        $singleSQL = "SELECT name, card_no, team FROM students WHERE id=$sngleId";
         $sngleRes = mysqli_query($conn, $singleSQL);
         $r = mysqli_fetch_assoc($sngleRes);
         $finalRowId =  $row1['id'];
@@ -73,7 +79,7 @@ if(mysqli_num_rows($particRes)>0){
 '.getGroupName($r['team']).'
 </td>
 <td width="12%">
-<center>'.$r['chest'].'</center>
+<center>'.$r['card_no'].'</center>
 </td>
 <td  width="9%">
 </td>

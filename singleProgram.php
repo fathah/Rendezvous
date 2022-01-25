@@ -45,7 +45,7 @@ if(isset($_GET['deleteId'])){
 $name = $row['name'];
 echo '<h3>'.$row['name'].'</h3>'; 
 echo '<div>Type: <span class="grName">'.getProgramType($row['type']).'</span></div>'; 
-echo '<div>Section: <span class="grName">'.getSection( $row['section']).'</span></div>'; 
+echo '<div>Section: <span class="grName">'.getSection( $row['section']).' '.strtoupper($row['general_type']).'</span></div>'; 
 
 $participantSql = "SELECT * FROM programlist WHERE programid = $id";
 $particRes = mysqli_query($conn, $participantSql);
