@@ -60,6 +60,26 @@ $id = mysqli_real_escape_string($conn, $_GET['id']);
 <select class="form-select" aria-label="Campus"  name="campus" id="campus" required>
   <option  value=""  <?php if($row['campus']==""){echo "selected";}?>>Campus</option>
   <option value="mnc"  <?php if($row['campus']=="mnc"){echo "selected";}?>>Madeenathunnoor</option>
+
+  <option value="mir" <?php if($row['campus']=="mir"){echo "selected";}?>>Imam Rabbani Kanthapuram</option>
+  <option value="dhic" <?php if($row['campus']=="dhic"){echo "selected";}?>>Darul Hidaya Engapuzha</option>
+  <option value="isb" <?php if($row['campus']=="isb"){echo "selected";}?>>Imam Shafi Busthanabad</option>
+  <option value="isv" <?php if($row['campus']=="isv"){echo "selected";}?>>Isra Vadanappally</option>
+  <option value="mne" <?php if($row['campus']=="mne"){echo "selected";}?>>Markaz Najath Ekarool</option>
+  <option value="mbc" <?php if($row['campus']=="mbc"){echo "selected";}?>>Markaz Al Bilal Cherippur</option>
+  <option value="dhp" <?php if($row['campus']=="dhp"){echo "selected";}?>>Darul Hikam Panavally</option>
+  <option value="amk" <?php if($row['campus']=="amk"){echo "selected";}?>>Al Munawwara Kollam</option>
+  <option value="irsc" <?php if($row['campus']=="irsc"){echo "selected";}?>>Irsunnabavi Calicut</option>
+  <option value="bin" <?php if($row['campus']=="bin"){echo "selected";}?>>Baithul Izza Narikkuni</option>
+  <option value="msm" <?php if($row['campus']=="msm"){echo "selected";}?>>Muassasa Mananthavadi</option>
+  <option value="dqm" <?php if($row['campus']=="dqm"){echo "selected";}?>>Darul Quran Muzhippoth</option>
+  <option value="jmc" <?php if($row['campus']=="jmc"){echo "selected";}?>>Jamalullaily Chelari</option>
+  <option value="msw" <?php if($row['campus']=="msw"){echo "selected";}?>>Markazu Swahaba</option>
+  <option value="seo" <?php if($row['campus']=="seo"){echo "selected";}?>>Shuahada Edu Omanoor</option>
+  <option value="azt" <?php if($row['campus']=="azt"){echo "selected";}?>>Al Zahra Tharuvana</option>
+  <option value="dkk" <?php if($row['campus']=="dkk"){echo "selected";}?>>Dalailul Khairath Kakkidippuram</option>
+
+
 </select> <br>
 <!-- Group Name -->
 <select class="form-select" aria-label="Section"  name="section" id="section" required>

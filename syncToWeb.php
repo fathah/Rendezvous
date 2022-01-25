@@ -23,16 +23,18 @@ if(mysqli_num_rows($res)>0){
         if(mysqli_num_rows($prRes)>0){
             while($prRow = mysqli_fetch_assoc($prRes)){
                 $prId = $prRow['programid'];
-                $prNameSQL = "SELECT name, resultDeclared FROM program WHERE id = $prId";
+                $prNameSQL = "SELECT id, name, resultDeclared,schedule_time FROM program WHERE id = $prId";
                 
                 $prNameRes = mysqli_query($conn, $prNameSQL);
                 $assoc = mysqli_fetch_assoc($prNameRes);
                 $name = $assoc['name'];
                 $isDeclared = $assoc['resultDeclared'];
+                $schedule = $assoc['schedule_time'];
+                
                 if($isDeclared==1){
-                    array_push($programlistArr, array($name, $prRow['rank']));
+                    array_push($programlistArr, array($prId,$name, $prRow['rank'],$schedule));
                 }else{
-                    array_push($programlistArr, array($name, "0"));
+                    array_push($programlistArr, array($prId,$name, "0",$schedule));
                 }
                 
             }
@@ -103,7 +105,8 @@ function syncProgramList(){
                  "point" => $r['point'],
                  "rank" => $r['rank'],
                  "type" => $r['type'],
-                 "name" => $r['name']
+                 "name" => $r['name'],
+                 "cardNo"=>$r['card_no'],
              ));
            
             

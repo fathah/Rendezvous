@@ -20,8 +20,15 @@
        $name= mysqli_real_escape_string($conn, $_POST['name']);
        $section= mysqli_real_escape_string($conn, $_POST['section']);
        $type = mysqli_real_escape_string($conn, $_POST['type']);
-
-       $mysql = "UPDATE program SET name='$name', section='$section', type='$type' WHERE id = $id";
+       $rules = null;
+       $topics = null;
+       if(isset($_POST['topics'])){
+        $topics = mysqli_real_escape_string($conn, $_POST['topics']);
+       }
+       if(isset($_POST['rules'])){
+        $rules = mysqli_real_escape_string($conn, $_POST['rules']);
+       }
+       $mysql = "UPDATE program SET name='$name', section='$section', type='$type', rules='$rules', topics='$topics' WHERE id = $id";
        if(mysqli_query($conn, $mysql)){
         $error = '<div class="alert alert-success" role="alert">
         Program updated successfully!
@@ -73,6 +80,14 @@ $row = mysqli_fetch_assoc($viewRes);
   <option value="s" <?php if($row['type']=="s"){echo "selected";}?>>Individual</option>
   <option value="g" <?php if($row['type']=="g"){echo "selected";}?>>Group</option>
 </select>
+<br>
+<div class="input-group mb-3">
+  <textarea name="rules"  class="form-control" id="rules" cols="30" rows="3" placeholder="Code of Conduct" ><?php echo $row['rules']; ?></textarea>
+</div>
+
+<div class="input-group mb-3">
+  <textarea name="topics"  class="form-control" id="topics" cols="30" rows="3" placeholder="Topics" ><?php echo $row['topics']; ?></textarea>
+</div>
 <br>
 <input type="submit" value="Update Program" name="submit"   class="btn btn-primary" style="float: right; margin-right:30px;">
 

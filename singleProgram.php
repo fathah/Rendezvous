@@ -144,6 +144,11 @@ if(mysqli_num_rows($resultRes)>0){
 <img src="img/edit.png" width="25px" alt="">
 </div>
 </a>
+<a href="scheduleProgram.php?id=<?php echo $id; ?>">
+<div class="floating" style="margin-right:60px; background:#c0392b !important;">
+<img src="img/schedule.png" width="25px" alt="">
+</div>
+</a>
 
 <a href="addResult.php?id=<?php echo $id; ?>">
 <div class="floatingLeft">
