@@ -13,7 +13,7 @@
 <body>
    <?php include'inc/nav.php'; 
    
-   $sql = "SELECT * FROM students";
+   $sql = "SELECT * FROM students ORDER BY card_no, campus";
    $res = mysqli_query($conn, $sql);
    
    ?>
@@ -23,7 +23,8 @@
 if(mysqli_num_rows($res)>0){
     while($row = mysqli_fetch_assoc($res)){
         echo'<a href="singleStudent.php?id='.$row['id'].'"><div class="snRow">
-        <p><img src="img/person.svg" width="30px" style="margin-right:10px;margin-bottom:5px;">'.$row['name'].' 
+        <p><img src="img/person.svg" width="30px" style="margin-right:10px;margin-bottom:5px;">'.$row['name'].'<span style="color:#c0392b;">  ('.$row['card_no'].') </span>
+        '.strtoupper($row['campus']).'
       <a href="editStudent.php?id='.$row['id'].'"><div class="ed"> <img src="img/edit.png" width="20px" alt="">
       </div></a>
         </p></div></a>';
