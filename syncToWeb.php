@@ -92,7 +92,7 @@ while($rw = mysqli_fetch_assoc($declRES)){
 
 function syncProgramList(){
     global $conn;
-     $sql = "SELECT a.*, b.name FROM programlist a, students b WHERE a.studentid = b.id";
+     $sql = "SELECT a.*, b.name,b.card_no FROM programlist a, students b WHERE a.studentid = b.id";
  $res = mysqli_query($conn, $sql);
  if($res){
      if(mysqli_num_rows($res)>0){

@@ -113,7 +113,7 @@ while($r = mysqli_fetch_assoc($prgrmRes)){
 $stdntSql = "SELECT * FROM students";
 $stdntRes = mysqli_query($conn, $stdntSql);
 while($r = mysqli_fetch_assoc($stdntRes)){
-  echo' <option value="'.$r['id'].'">'.$r['card_no'].' - '.$r['name'].' ('.strtoupper($r['team']).')'.'</option> ';
+  echo' <option value="'.$r['id'].'">'.$r['card_no'].' - '.$r['name'].' ('.strtoupper($r['campus']).')'.'</option> ';
 }
 
 ?>
