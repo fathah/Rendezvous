@@ -24,7 +24,8 @@ if(mysqli_num_rows($res)>0){
     while($row = mysqli_fetch_assoc($res)){
         echo'<a href="singleStudent.php?id='.$row['id'].'"><div class="snRow">
         <p><img src="img/person.svg" width="30px" style="margin-right:10px;margin-bottom:5px;">'.$row['name'].'<span style="color:#c0392b;">  ('.$row['card_no'].') </span>
-        '.strtoupper($row['campus']).'
+        '.strtoupper($row['campus']).' - '
+        .strtoupper($row['team']).'
       <a href="editStudent.php?id='.$row['id'].'"><div class="ed"> <img src="img/edit.png" width="20px" alt="">
       </div></a>
         </p></div></a>';

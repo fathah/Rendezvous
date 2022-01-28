@@ -140,39 +140,39 @@ function getProgramType($code)
 
 function getPoint($rank, $grade, bool $isGroup, $programName)
 {
-  if ($programName == "CASE STUDY" || $programName == "RISALA CREATION" || $programName == "TUG OF WAR") {
+  if ($programName == "Gardening"  || $programName == "Tug of War") {
     switch ($grade) {
       case 'APLUS':
         if ($rank == 1) {
-          return 32;
+          return 26;
         } elseif ($rank == 2) {
-          return 29;
+          return 18;
         } elseif ($rank == 3) {
-          return 27;
+          return 12;
         } else {
-          return 17;
+          return 6;
         }
         break;
       case 'A':
         if ($rank == 1) {
-          return 30;
-        } elseif ($rank == 2) {
-          return 27;
-        } elseif ($rank == 3) {
           return 25;
+        } elseif ($rank == 2) {
+          return 17;
+        } elseif ($rank == 3) {
+          return 11;
         } else {
-          return 15;
+          return 5;
         }
         break;
       case 'B':
         if ($rank == 1) {
-          return 27;
+          return 23;
         } elseif ($rank == 2) {
-          return 24;
+          return 15;
         } elseif ($rank == 3) {
-          return 22;
+          return 9;
         } else {
-          return 12;
+          return 3;
         }
         break;
 
@@ -180,13 +180,13 @@ function getPoint($rank, $grade, bool $isGroup, $programName)
 
       default:
         if ($rank == 1) {
-          return 25;
+          return 21;
         } elseif ($rank == 2) {
-          return 22;
+          return 13;
         } elseif ($rank == 3) {
-          return 20;
+          return 7;
         } else {
-          return 10;
+          return 1;
         }
         break;
     }
@@ -195,25 +195,25 @@ function getPoint($rank, $grade, bool $isGroup, $programName)
       case 'APLUS':
         if ($rank == 1) {
           if ($isGroup) {
-            return 22;
+            return 16;
           } else {
             return 11;
           }
         } elseif ($rank == 2) {
           if ($isGroup) {
-            return 19;
+            return 12;
           } else {
             return 9;
           }
         } elseif ($rank == 3) {
           if ($isGroup) {
-            return 17;
+            return 9;
           } else {
             return 7;
           }
         } else {
           if ($isGroup) {
-            return 12;
+            return 6;
           } else {
             return 6;
           }
@@ -222,25 +222,25 @@ function getPoint($rank, $grade, bool $isGroup, $programName)
       case 'A':
         if ($rank == 1) {
           if ($isGroup) {
-            return 20;
+            return 15;
           } else {
             return 10;
           }
         } elseif ($rank == 2) {
           if ($isGroup) {
-            return 17;
+            return 11;
           } else {
             return 8;
           }
         } elseif ($rank == 3) {
           if ($isGroup) {
-            return 15;
+            return 8;
           } else {
             return 6;
           }
         } else {
           if ($isGroup) {
-            return 10;
+            return 5;
           } else {
             return 5;
           }
@@ -249,25 +249,25 @@ function getPoint($rank, $grade, bool $isGroup, $programName)
       case 'B':
         if ($rank == 1) {
           if ($isGroup) {
-            return 17;
+            return 13;
           } else {
             return 8;
           }
         } elseif ($rank == 2) {
           if ($isGroup) {
-            return 14;
+            return 9;
           } else {
             return 6;
           }
         } elseif ($rank == 3) {
           if ($isGroup) {
-            return 12;
+            return 6;
           } else {
             return 4;
           }
         } else {
           if ($isGroup) {
-            return 7;
+            return 3;
           } else {
             return 3;
           }
@@ -276,25 +276,25 @@ function getPoint($rank, $grade, bool $isGroup, $programName)
 case 'C':
   if ($rank == 1) {
     if ($isGroup) {
-      return 15;
+      return 11;
     } else {
       return 6;
     }
   } elseif ($rank == 2) {
     if ($isGroup) {
-      return 12;
+      return 7;
     } else {
       return 4;
     }
   } elseif ($rank == 3) {
     if ($isGroup) {
-      return 10;
+      return 4;
     } else {
       return 2;
     }
   } else {
     if ($isGroup) {
-      return 5;
+      return 1;
     } else {
       return 1;
     }
@@ -311,13 +311,13 @@ case 'C':
           }
         } elseif ($rank == 2) {
           if ($isGroup) {
-            return 7;
+            return 6;
           } else {
             return 3;
           }
         } elseif ($rank == 3) {
           if ($isGroup) {
-            return 5;
+            return 3;
           } else {
             return 1;
           }
